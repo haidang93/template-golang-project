@@ -1,0 +1,56 @@
+{
+  "key_authorization_invalid_token": "Token không hợp lệ",
+  "key_authorization_invalid_credential": "Thông tin xác thực không hợp lệ",
+  "key_authorization_wrong_email_or_password": "Email hoặc mật khẩu sai",
+  "key_authorization_no_token": "Không tìm thấy access token",
+  "key_authorization_unexpected_signing_method": "Phương thức ký không mong đợi",
+
+  "key_bad_request_user_not_active": "Người dùng này không hoạt động",
+
+  "key_not_found_user": "Người dùng này không tồn tại",
+  "key_not_found_community": "Cộng đồng này không tồn tại",
+  "key_not_found_community_member": "Thành viên này không tồn tại",
+
+  "key_duplicate_constraint_username": "Tên đăng nhập này đã được sử dụng",
+  "key_duplicate_constraint_email": "Email này đã được sử dụng",
+  "key_duplicate_constraint_community_identifier": "ID cộng đồng này đã được sử dụng",
+  "key_duplicate_constraint_unique_value": "Giá trị trùng lặp vi phạm ràng buộc duy nhất",
+
+  "key_validate_community_type": "Loại cộng đồng không hợp lệ",
+  "key_validate_status": "Trạng thái không hợp lệ",
+  "key_validate_file_size_5mb": "Kích thước file không được vượt quá 5MB",
+  "key_validate_private_community": "Đây là cộng đồng riêng tư",
+  "key_validate_community_id": "ID cộng đồng không hợp lệ",
+  "key_validate_contact_type": "Loại liên hệ không hợp lệ",
+  "key_validate_member_role": "Vai trò thành viên không hợp lệ",
+  "key_validate_empty_email": "Vui lòng nhập email",
+  "key_validate_empty_phone": "Vui lòng nhập số điện thoại",
+  "key_validate_not_email": "Email không hợp lệ",
+  "key_validate_wrong_password": "Mật khẩu sai",
+
+  "key_forbidden_permission_required": "Bạn không có quyền thực hiện hành động này",
+  "key_forbidden_not_a_member": "Bạn không phải là thành viên của cộng đồng này",
+  "key_forbidden_can_not_join_community": "Bạn không thể tham gia cộng đồng này. Vui lòng liên hệ quản trị viên để biết thêm thông tin",
+  "key_forbidden_can_not_accept_invitation": "Bạn không thể chấp nhận lời mời này. Vui lòng liên hệ quản trị viên để biết thêm thông tin",
+  "key_forbidden_delete_member": "Bạn không có quyền xóa thành viên này",
+
+  "key_record_exists_member": "Bản ghi thành viên đã tồn tại",
+
+  "key_information_member_exists": "Bạn đã là thành viên",
+
+  "key_error_redis_not_initialized": "Redis client chưa được khởi tạo",
+  "key_authorization_email_not_verified": "Email của tài khoản bạn chưa được xác minh",
+  "key_bad_request_already_verified": "Email của tài khoản này đã được xác minh",
+  "key_internal_error_update_failed": "Không cập nhật được bản ghi",
+  "key_internal_error_create_file_meta_failed": "Không thể tạo siêu dữ liệu tệp",
+  "key_internal_error_user_not_created": "Người dùng không được tạo",
+  "key_internal_error_no_secret_code": "Không thể tìm thấy mã bí mật tài khoản. Vui lòng liên hệ với bộ phận hỗ trợ",
+  "key_internal_error_wrong_passcode": "Mã bí mật không chính xác, Vui lòng thử lại",
+  "key_internal_error_can_not_validate_passcode_no_user": "Không thể xác thực mật mã. Không tìm thấy người dùng",
+  "key_not_found_member_infor": "Không lấy được thông tin thành viên",
+  "key_validate_empty_username": "Vui lòng nhập tên người dùng",
+  "key_validate_not_username": "Tên người dùng không hợp lệ",
+  "key_validate_max_5_doc": "Vui lòng tải lên không quá 5 tài liệu",
+  "key_forbidden_announcement": "Thông báo này là riêng tư",
+  "key_forbidden_wait_x_second": "Vui lòng đợi {second} giây trước khi bạn có thể yêu cầu lại"
+}

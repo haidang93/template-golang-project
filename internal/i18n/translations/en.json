@@ -1,0 +1,57 @@
+{
+  "key_authorization_invalid_token": "Invalid token",
+  "key_authorization_invalid_credential": "Invalid credential",
+  "key_authorization_wrong_email_or_password": "Wrong email or password",
+  "key_authorization_no_token": "Access token not found",
+  "key_authorization_unexpected_signing_method": "Unexpected signing method",
+  "key_authorization_email_not_verified": "You account's email is not verified",
+
+  "key_bad_request_user_not_active": "This user is not active",
+  "key_bad_request_already_verified": "This account's email has already verified",
+
+  "key_internal_error_update_failed": "Failed to update record",
+  "key_internal_error_create_file_meta_failed": "Failed to create file metadata",
+  "key_internal_error_user_not_created": "User is not created",
+  "key_internal_error_no_secret_code": "Can't find account secret code. Please contact support",
+  "key_internal_error_wrong_passcode": "The secret code is incorrect, Please try again",
+  "key_internal_error_can_not_validate_passcode_no_user": "Can't validate passcode. User not found",
+
+  "key_not_found_user": "This user does not exists",
+  "key_not_found_community": "This community does not exists",
+  "key_not_found_community_member": "This member does not exists",
+  "key_not_found_member_infor": "Failed to get member information",
+
+  "key_duplicate_constraint_username": "This username is already taken",
+  "key_duplicate_constraint_email": "This email is already taken",
+  "key_duplicate_constraint_community_identifier": "This community id is already taken",
+  "key_duplicate_constraint_unique_value": "Duplicate value violates unique constraint",
+
+  "key_validate_community_type": "Invalid community type",
+  "key_validate_status": "Invalid status",
+  "key_validate_file_size_5mb": "File size must not exceeds 5MB",
+  "key_validate_private_community": "This is a private community",
+  "key_validate_community_id": "Community indentifier invalid",
+  "key_validate_contact_type": "Contact type is invalid",
+  "key_validate_member_role": "Member role is invalid",
+  "key_validate_empty_email": "Please enter email",
+  "key_validate_empty_username": "please enter username",
+  "key_validate_empty_phone": "please enter phone number",
+  "key_validate_not_email": "Email invalid",
+  "key_validate_not_username": "username invalid",
+  "key_validate_wrong_password": "Wrong password",
+  "key_validate_max_5_doc": "Please upload no more than 5 documents",
+
+  "key_forbidden_permission_required": "You don't have permission for this action",
+  "key_forbidden_not_a_member": "You are not a member of this community",
+  "key_forbidden_can_not_join_community": "You can't join this community. Please contact community admin for more information",
+  "key_forbidden_can_not_accept_invitation": "You can't accept this invitation. Please contact community admin for more information",
+  "key_forbidden_delete_member": "You don't have permission to delete this member",
+  "key_forbidden_announcement": "This announcement is private",
+  "key_forbidden_wait_x_second": "Please wait {second} second(s) before you can request again",
+
+  "key_record_exists_member": "Member record already exists",
+
+  "key_information_member_exists": "You are already a member",
+
+  "key_error_redis_not_initialized": "Redis client is not initialized"
+}
