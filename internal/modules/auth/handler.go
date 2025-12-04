@@ -18,13 +18,13 @@ import (
 	"github.com/pquerna/otp/totp"
 )
 
-type AuthController struct {
+type AuthHandler struct {
 	Repo         *AuthRepository
 	redisService myredis.RedisServiceInterface
 	UserService  user.UserRepositoryInterface
 }
 
-func (ctr *AuthController) Signup(c echo.Context) error {
+func (ctr *AuthHandler) Signup(c echo.Context) error {
 	var req SignupDto
 	if err := validate.Bind(c, &req); err != nil {
 		return response.BadRequestErr(c, err)
@@ -93,7 +93,7 @@ func (ctr *AuthController) Signup(c echo.Context) error {
 	return c.JSON(http.StatusOK, newUser)
 }
 
-func (ctr *AuthController) Signin(c echo.Context) error {
+func (ctr *AuthHandler) Signin(c echo.Context) error {
 	var req SigninDto
 	if err := validate.Bind(c, &req); err != nil {
 		return response.BadRequestErr(c, err)
@@ -138,7 +138,7 @@ func (ctr *AuthController) Signin(c echo.Context) error {
 	return response.Success(c, map[string]any{"accessToken": token, "user": updated})
 }
 
-func (ctr *AuthController) RefreshToken(c echo.Context) error {
+func (ctr *AuthHandler) RefreshToken(c echo.Context) error {
 	UserID := util.GetUserID(c)
 	dto := user.UserRequestDto{
 		ArrayID: &[]string{*UserID},

@@ -9,29 +9,29 @@ import (
 )
 
 type AuthModule struct {
-	Controller *AuthController
-	Repo       *AuthRepository
+	handler *AuthHandler
+	Repo    *AuthRepository
 }
 
 func CreateModule(db *pgxpool.Pool) *AuthModule {
 	repo := AuthRepository{DB: db}
-	controller := AuthController{Repo: &repo}
-	return &AuthModule{Repo: &repo, Controller: &controller}
+	controller := AuthHandler{Repo: &repo}
+	return &AuthModule{Repo: &repo, handler: &controller}
 }
 
 func (m *AuthModule) Import(
 	redisService myredis.RedisServiceInterface,
 	UserService user.UserRepositoryInterface,
 ) {
-	m.Controller.UserService = UserService
-	m.Controller.redisService = redisService
+	m.handler.UserService = UserService
+	m.handler.redisService = redisService
 }
 
 func (m *AuthModule) RegisterRoutes(group *echo.Group) {
 	auth := group.Group("/auth")
-	auth.POST("/signin", m.Controller.Signin)
-	auth.POST("/signup", m.Controller.Signup)
+	auth.POST("/signin", m.handler.Signin)
+	auth.POST("/signup", m.handler.Signup)
 
 	privateAuth := auth.Group("", mymiddleware.AuthMiddleware)
-	privateAuth.POST("/refresh-token", m.Controller.RefreshToken)
+	privateAuth.POST("/refresh-token", m.handler.RefreshToken)
 }

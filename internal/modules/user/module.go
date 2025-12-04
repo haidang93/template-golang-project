@@ -9,34 +9,34 @@ import (
 )
 
 type UserModule struct {
-	Controller *UserController
-	Repo       *UserRepository
+	Handler *UserHandler
+	Repo    *UserRepository
 }
 
 func CreateModule(db *pgxpool.Pool) *UserModule {
 	repo := UserRepository{DB: db}
-	controller := UserController{Repo: &repo}
-	return &UserModule{Repo: &repo, Controller: &controller}
+	controller := UserHandler{Repo: &repo}
+	return &UserModule{Repo: &repo, Handler: &controller}
 }
 
 func (m *UserModule) Import(
 	RedisService myredis.RedisServiceInterface,
 	EmailService emailservice.EmailServiceInterface,
 ) {
-	m.Controller.RedisService = RedisService
-	m.Controller.EmailService = EmailService
+	m.Handler.RedisService = RedisService
+	m.Handler.EmailService = EmailService
 }
 
 func (m *UserModule) RegisterRoutes(group *echo.Group) {
 	user := group.Group("/user")
-	user.POST("/reset-password", m.Controller.ResetPassword)
-	user.POST("/request-password-reset-email", m.Controller.RequestPasswordResetEmail)
-	user.POST("/request-email-verification", m.Controller.RequestEmailVerification)
-	user.POST("/verify-email", m.Controller.VerifyEmail)
+	user.POST("/reset-password", m.Handler.ResetPassword)
+	user.POST("/request-password-reset-email", m.Handler.RequestPasswordResetEmail)
+	user.POST("/request-email-verification", m.Handler.RequestEmailVerification)
+	user.POST("/verify-email", m.Handler.VerifyEmail)
 
 	userAuth := user.Group("", mymiddleware.AuthMiddleware)
-	userAuth.GET("/detail", m.Controller.detail)
-	userAuth.POST("/update", m.Controller.Update)
-	userAuth.POST("/update-password", m.Controller.UpdatePassword)
-	userAuth.POST("/update-username", m.Controller.UpdateUserName)
+	userAuth.GET("/detail", m.Handler.detail)
+	userAuth.POST("/update", m.Handler.Update)
+	userAuth.POST("/update-password", m.Handler.UpdatePassword)
+	userAuth.POST("/update-username", m.Handler.UpdateUserName)
 }

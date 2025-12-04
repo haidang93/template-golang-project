@@ -18,13 +18,13 @@ import (
 	"github.com/pquerna/otp/totp"
 )
 
-type UserController struct {
+type UserHandler struct {
 	Repo         *UserRepository
 	RedisService myredis.RedisServiceInterface
 	EmailService emailservice.EmailServiceInterface
 }
 
-func (ctr *UserController) detail(c echo.Context) error {
+func (ctr *UserHandler) detail(c echo.Context) error {
 	UserID := util.GetUserID(c)
 
 	user, err := ctr.Repo.GetOne(&UserRequestDto{ArrayID: &[]string{*UserID}})
@@ -38,7 +38,7 @@ func (ctr *UserController) detail(c echo.Context) error {
 	return c.JSON(http.StatusOK, user)
 }
 
-func (ctr *UserController) Update(c echo.Context) error {
+func (ctr *UserHandler) Update(c echo.Context) error {
 	UserID := util.GetUserID(c)
 
 	var dto UserUpdateDto
@@ -67,7 +67,7 @@ func (ctr *UserController) Update(c echo.Context) error {
 	return c.JSON(http.StatusOK, updated)
 }
 
-func (ctr *UserController) UpdatePassword(c echo.Context) error {
+func (ctr *UserHandler) UpdatePassword(c echo.Context) error {
 	UserID := util.GetUserID(c)
 
 	type Req struct {
@@ -128,7 +128,7 @@ func (ctr *UserController) UpdatePassword(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]any{"accessToken": token, "user": updated})
 }
 
-func (ctr *UserController) UpdateUserName(c echo.Context) error {
+func (ctr *UserHandler) UpdateUserName(c echo.Context) error {
 	UserID := util.GetUserID(c)
 
 	type Req struct {
@@ -158,7 +158,7 @@ func (ctr *UserController) UpdateUserName(c echo.Context) error {
 	return c.JSON(http.StatusOK, updated)
 }
 
-func (ctr *UserController) ResetPassword(c echo.Context) error {
+func (ctr *UserHandler) ResetPassword(c echo.Context) error {
 	type Req struct {
 		Email           *string `json:"email"`
 		Code            *string `json:"code"`
@@ -231,7 +231,7 @@ func (ctr *UserController) ResetPassword(c echo.Context) error {
 	return response.Success(c, map[string]any{"accessToken": newToken, "user": data})
 }
 
-func (ctr *UserController) VerifyEmail(c echo.Context) error {
+func (ctr *UserHandler) VerifyEmail(c echo.Context) error {
 	type Req struct {
 		Email *string `json:"email"`
 		Code  *string `json:"code"`
@@ -288,7 +288,7 @@ func (ctr *UserController) VerifyEmail(c echo.Context) error {
 	return response.Success(c, map[string]any{"accessToken": newToken, "user": data})
 }
 
-func (ctr *UserController) RequestEmailVerification(c echo.Context) error {
+func (ctr *UserHandler) RequestEmailVerification(c echo.Context) error {
 	type Req struct {
 		Email *string `json:"email"`
 	}
@@ -361,7 +361,7 @@ func (ctr *UserController) RequestEmailVerification(c echo.Context) error {
 	})
 }
 
-func (ctr *UserController) RequestPasswordResetEmail(c echo.Context) error {
+func (ctr *UserHandler) RequestPasswordResetEmail(c echo.Context) error {
 	type Req struct {
 		Email *string `json:"email"`
 	}
